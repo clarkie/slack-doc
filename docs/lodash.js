@@ -31,9 +31,11 @@ module.exports = () => {
     filter((d) => d.name !== 'undefined'),
     map((d) => pick(['description', 'params', 'name', 'returns', 'examples'], d)),
     keyBy('name'),
-    update('params', map(convertParamToString)),
-    update('returns', map(convertParamToString)),
-    mapValues(convertToString)
+    mapValues(flow(
+      update('returns', map(convertParamToString)),
+      update('params', map(convertParamToString)),
+      convertToString
+    ))
   )(lodashJsDoc.docs);
 
 
