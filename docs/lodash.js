@@ -1,5 +1,5 @@
 const lodashJsDoc = require('./lodash.json');
-const { flow, map, pick, filter, keyBy, mapValues, identity, update } = require('lodash/fp');
+const { flow, map, pick, reject, keyBy, mapValues, identity, update } = require('lodash/fp');
 
 const convertParamToString = ({
   type: { names },
@@ -28,8 +28,8 @@ ${returns.join('\n')}
 
 module.exports = () => {
   const docs = flow(
-    filter((d) => d.name !== 'undefined'),
-    map((d) => pick(['description', 'params', 'name', 'returns', 'examples'], d)),
+    reject({ name: 'undefined' }),
+    map(pick(['description', 'params', 'name', 'returns', 'examples']),
     keyBy('name'),
     mapValues(flow(
       update('returns', map(convertParamToString)),
