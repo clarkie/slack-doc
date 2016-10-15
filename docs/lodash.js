@@ -29,7 +29,7 @@ ${returns.join('\n')}
 module.exports = () => {
   const docs = flow(
     reject({ name: 'undefined' }),
-    map(pick(['description', 'params', 'name', 'returns', 'examples']),
+    map(pick(['description', 'params', 'name', 'returns', 'examples'])),
     keyBy('name'),
     mapValues(flow(
       update('returns', map(convertParamToString)),
@@ -38,8 +38,6 @@ module.exports = () => {
     ))
   )(lodashJsDoc.docs);
 
-
-  console.log(docs);
-
+  console.log(Object.keys(docs));
   return docs;
 };
