@@ -1,0 +1,22 @@
+{
+  "name": "slack-doc",
+  "version": "1.0.0",
+  "description": "Query documentation in slack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clarkie/slack-doc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clarkie/slack-doc/issues"
+  },
+  "homepage": "https://github.com/clarkie/slack-doc#readme",
+  "dependencies": {
+    "slackbots": "^0.5.3"
+  }
+}
