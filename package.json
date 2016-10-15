@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/clarkie/slack-doc#readme",
   "dependencies": {
+    "lodash": "^4.16.4",
     "slackbots": "^0.5.3"
   }
 }

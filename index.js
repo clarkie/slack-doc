@@ -1,4 +1,5 @@
 const Bot = require('slackbots');
+const lodashDocs = require('./docs/lodash')
 
 var settings = {
   token: 'YOUR API KEY',
@@ -7,13 +8,10 @@ var settings = {
 
 var bot = new Bot(settings);
 
-const lodashDocs = query => {
-  switch (query) {
-    case 'differenceBy': return 'differenceBy means x';
-    case 'sortBy': return 'sortBy means x';
-    default: return 'Sorry dude, Lodash ain\'t got that command';
-  }
-}
+const docs = {
+  lodash: {},
+};
+
 
 const isChatMessage = message => message.type === 'message' && message.text;
 const isChannelConversation = message => typeof message.channel === 'string' && message.channel[0] === 'C';
@@ -23,11 +21,14 @@ const lookupDocs = message => {
   const library = commands[1];
   const query = commands[2];
 
-  switch(library) {
-    case 'lodash': return lodashDocs(query);
-    default: return 'Sorry dude, I don\'t know that library';
-  }
+  if (!docs[library]) return 'Sorry dude, I don\'t know that library';
+  if (!docs[library][query]) return `Hey man, ${query} was never part of the spec! Try something else`;
+  return docs[library][query];
 }
+
+bot.on('start', (message) => {
+  docs.lodash = lodashDocs();
+});
 
 bot.on('message', (message) => {
   if (isChatMessage(message) && isChannelConversation(message) && isDocumenationRequest(message)) {
