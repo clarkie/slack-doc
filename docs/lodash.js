@@ -20,10 +20,10 @@ const convertToString = ({ name, description, params, returns }) =>
 ${description}
 
 *Params*
-${params}
+${params.join('\n')}
 
 *Returns*
-${returns}
+${returns.join('\n')}
 `;
 
 module.exports = () => {
