@@ -2,7 +2,7 @@ const Bot = require('slackbots');
 const lodashDocs = require('./docs/lodash')
 
 var settings = {
-  token: 'YOUR API KEY',
+  token: process.env.SLACK_API_KEY,
   name: 'DocBot'
 };
 
