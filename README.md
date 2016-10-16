@@ -26,7 +26,7 @@ For example
 ```
 docs lodash range
 ```
-
+![lodash range example](https://raw.githubusercontent.com/clarkie/slack-doc/master/example.png)
 
 ## Why?
 
